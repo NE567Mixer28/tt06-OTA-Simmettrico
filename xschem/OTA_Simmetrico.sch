@@ -141,7 +141,7 @@ N -340 -240 -270 -240 {
 lab=#net4}
 C {devices/iopin.sym} 330 -620 0 0 {name=p1 lab=VDD
 }
-C {devices/iopin.sym} 420 -430 0 0 {name=p2 lab=VSS
+C {devices/iopin.sym} 330 -590 0 0 {name=p2 lab=VSS
 }
 C {sky130_fd_pr/pfet_01v8_hvt.sym} -490 -180 0 0 {name=M1
 L=0.15
