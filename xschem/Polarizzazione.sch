@@ -35,11 +35,11 @@ lab=vds}
 N 40 -70 40 -20 {
 lab=GND}
 N -30 10 0 10 {
-lab=vgs}
+lab=#net1}
 N -195 -70 -195 -55 {
 lab=GND}
 N -105 10 -30 10 {
-lab=vgs}
+lab=#net1}
 N -190 -70 -105 -70 {
 lab=GND}
 N -105 -70 -105 -50 {
@@ -86,11 +86,20 @@ xschem raw_read $netlist_dir/[file tail [file rootname [xschem get current_name]
 
 "
 }
-C {devices/lab_pin.sym} 160 145 2 0 {name=p3 sig_type=std_logic lab=vds}
-C {devices/lab_pin.sym} -105 10 2 1 {name=p6 sig_type=std_logic lab=vgs}
+C {devices/lab_pin.sym} 180 145 2 0 {name=p3 sig_type=std_logic lab=vds}
+C {devices/lab_pin.sym} -135 10 2 1 {name=p6 sig_type=std_logic lab=vgs}
 C {devices/gnd.sym} -195 -55 0 0 {name=l1 lab=GND}
-C {devices/code_shown.sym} -535 -335 0 0 {name=s1 only_toplevel=false value="
+C {devices/code_shown.sym} -335 -485 0 0 {name=s1 only_toplevel=false value="
 .dc vgs 0 1.8 1m vds 0 1.8  1m
 .save all
 .end
 "}
+C {devices/code.sym} -470 -510 0 0 {name=TT_MODELS
+only_toplevel=true
+format="tcleval( @value )"
+value="
+** opencircuitdesign pdks install
+.lib $::SKYWATER_MODELS/sky130.lib.spice tt
+
+"
+spice_ignore=false}
