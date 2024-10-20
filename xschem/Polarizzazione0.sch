@@ -5,68 +5,61 @@ K {}
 V {}
 S {}
 E {}
-N -50 -520 -50 -510 {
+B 2 150 -810 950 -410 {flags=graph
+y1=0
+
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=0
+x2=1.8
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+node=i(@m.xm1.msky130_fd_pr__pfet_01v8_hvt[id])
+color=4
+dataset=-1
+unitx=1
+logx=0
+logy=0
+y2=0.00003}
+N -160 -630 -160 -620 {
 lab=GND}
-N -50 -510 -50 -500 {
+N -160 -620 -160 -610 {
 lab=GND}
-N -50 -590 -50 -580 {
+N -160 -700 -160 -690 {
 lab=#net1}
-N -50 -590 0 -590 {
+N -160 -700 -110 -700 {
 lab=#net1}
-N 150 -670 150 -610 {
+N 40 -780 40 -720 {
 lab=GND}
-N 40 -670 40 -620 {
+N -70 -780 -70 -730 {
 lab=GND}
-N 40 -670 150 -670 {
+N -70 -780 40 -780 {
 lab=GND}
-N 150 -550 150 -520 {
+N 40 -660 40 -630 {
 lab=#net2}
-N 40 -440 150 -440 {
+N -70 -550 40 -550 {
 lab=#net2}
-N 40 -560 40 -520 {
+N -70 -670 -70 -630 {
 lab=#net3}
-N 150 -670 190 -670 {
+N 40 -780 80 -780 {
 lab=GND}
-N 190 -670 190 -660 {
+N 80 -780 80 -770 {
 lab=GND}
-N 40 -460 40 -440 {
+N -70 -570 -70 -550 {
 lab=#net2}
-N 150 -520 150 -440 {
+N 40 -630 40 -550 {
 lab=#net2}
-C {devices/vsource.sym} -50 -550 2 0 {name=Vgs value=1 savecurrent=false}
-C {devices/vsource.sym} 150 -580 0 0 {name=Vds value="1.8" savecurrent=false}
-C {devices/gnd.sym} -50 -500 0 0 {name=l1 lab=GND}
-C {sky130_fd_pr/corner.sym} -560 -750 0 0 {name=CORNER only_toplevel=true corner=tt}
-C {devices/simulator_commands_shown.sym} -550 -570 0 0 {name=COMMANDS
-simulator=ngspice
-only_toplevel=false 
-value="
-.control
-.param Wp =6
-dc Vds 0 1.8 0.02 Vgs 0 1.4 0.2
- *let start_w = 1
-  *let stop_w = 90
-  *let delta_w = 5
-  *let w_act = start_w
-  *while w_act le stop_w
-   * alterparam Wp = $&w_act
-    *reset
-   * save all
-    *run
-    *remzerovec
-    *let w_act = w_act + delta_w
-    plot i(Vds)
-plot i(Vmeas)
-write Polarizzazione0.raw
-
-
-.endc
-.save all
-
-"}
-C {sky130_fd_pr/pfet3_01v8_hvt.sym} 20 -590 0 0 {name=M1
-L=1
-W=Wp
+C {devices/vsource.sym} -160 -660 2 0 {name=Vgs value=1.8 savecurrent=false}
+C {devices/vsource.sym} 40 -690 0 0 {name=Vds value="1.8" savecurrent=false}
+C {sky130_fd_pr/corner.sym} -570 -770 0 0 {name=CORNER only_toplevel=true corner=tt}
+C {sky130_fd_pr/pfet3_01v8_hvt.sym} -90 -700 0 0 {name=M1
+L=2
+W=W
 body=GND
 nf=1
 mult=1
@@ -79,5 +72,37 @@ sa=0 sb=0 sd=0
 model=pfet_01v8_hvt
 spiceprefix=X
 }
-C {devices/gnd.sym} 190 -660 0 0 {name=l2 lab=GND}
-C {devices/ammeter.sym} 40 -490 0 0 {name=Vmeas savecurrent=true}
+C {devices/ammeter.sym} -70 -600 0 0 {name=Vmeas savecurrent=true}
+C {devices/launcher.sym} 210 -380 0 0 {name=h5
+descr="load waves" 
+tclcommand="xschem raw_read $netlist_dir/Polarizzazione0.raw dc"
+}
+C {devices/simulator_commands_shown.sym} -440 -750 0 0 {name=COMMANDS1
+simulator=ngspice
+only_toplevel=false 
+value="
+* ngspice commands
+.param W=1
+.options savecurrents
+.dc Vds 0 1.8 0.01
+.control
+  let start_w = 1
+  let stop_w = 10
+  let delta_w = 1
+  let w_act = start_w
+  while w_act le stop_w
+    alterparam W = $&w_act
+    reset
+    save all
+    save @m.xm1.msky130_fd_pr__nfet_01v8_hvt[gm]
+    save @m.xm1.msky130_fd_pr__nfet_01v8_hvt[W] 
+    run
+    remzerovec
+    write Polarizzazione0.raw
+    let w_act = w_act + delta_w
+    set appendwrite
+  end
+.endc
+"}
+C {devices/gnd.sym} 80 -770 0 0 {name=l1 lab=GND}
+C {devices/gnd.sym} -160 -610 0 0 {name=l2 lab=GND}
