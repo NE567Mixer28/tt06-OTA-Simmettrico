@@ -21,14 +21,18 @@ N 40 -670 150 -670 {
 lab=GND}
 N 150 -550 150 -520 {
 lab=#net2}
-N 40 -520 150 -520 {
+N 40 -440 150 -440 {
 lab=#net2}
 N 40 -560 40 -520 {
-lab=#net2}
+lab=#net3}
 N 150 -670 190 -670 {
 lab=GND}
 N 190 -670 190 -660 {
 lab=GND}
+N 40 -460 40 -440 {
+lab=#net2}
+N 150 -520 150 -440 {
+lab=#net2}
 C {devices/vsource.sym} -50 -550 2 0 {name=Vgs value=1 savecurrent=false}
 C {devices/vsource.sym} 150 -580 0 0 {name=Vds value="1.8" savecurrent=false}
 C {devices/gnd.sym} -50 -500 0 0 {name=l1 lab=GND}
@@ -38,8 +42,8 @@ simulator=ngspice
 only_toplevel=false 
 value="
 .control
-.param Wp = 1
-dc Vds 0 1.8 0.02 
+.param Wp =6
+dc Vds 0 1.8 0.02 Vgs 0 1.4 0.2
  *let start_w = 1
   *let stop_w = 90
   *let delta_w = 5
@@ -52,6 +56,8 @@ dc Vds 0 1.8 0.02
     *remzerovec
     *let w_act = w_act + delta_w
     plot i(Vds)
+plot i(Vmeas)
+write Polarizzazione0.raw
 
 
 .endc
@@ -59,7 +65,7 @@ dc Vds 0 1.8 0.02
 
 "}
 C {sky130_fd_pr/pfet3_01v8_hvt.sym} 20 -590 0 0 {name=M1
-L=0.15
+L=1
 W=Wp
 body=GND
 nf=1
@@ -74,3 +80,4 @@ model=pfet_01v8_hvt
 spiceprefix=X
 }
 C {devices/gnd.sym} 190 -660 0 0 {name=l2 lab=GND}
+C {devices/ammeter.sym} 40 -490 0 0 {name=Vmeas savecurrent=true}

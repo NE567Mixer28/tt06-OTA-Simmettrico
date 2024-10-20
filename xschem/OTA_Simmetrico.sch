@@ -121,8 +121,6 @@ N -230 -280 -200 -280 {
 lab=IN2}
 N -540 -280 -510 -280 {
 lab=IN1}
-N -100 -370 -20 -370 {
-lab=OUT}
 N -470 -280 -400 -280 {
 lab=#net6}
 N -400 -340 -400 -280 {
@@ -173,11 +171,13 @@ N -1310 -375 -1310 -355 {
 lab=IN1}
 N -1190 -375 -1190 -355 {
 lab=IN2}
+N -100 -370 30 -370 {
+lab=OUT}
 C {devices/iopin.sym} -1310 -570 0 0 {name=p1 lab=VDD
 }
 C {sky130_fd_pr/pfet_01v8_hvt.sym} -490 -280 0 0 {name=M1
-L=0.15
-W=1
+L=1
+W=6
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -190,8 +190,8 @@ model=pfet_01v8_hvt
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8_hvt.sym} -250 -280 0 1 {name=M2
-L=0.15
-W=1
+L=1
+W=6
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -233,7 +233,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} -120 -60 0 0 {name=M5
 L=1
-W=4
+W=5
 nf=1 
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -247,7 +247,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} -610 -60 0 1 {name=M6
 L=1
-W=4
+W=5
 nf=1 
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -261,7 +261,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8_hvt.sym} -610 -500 0 1 {name=M7
 L=1
-W=4
+W=3
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -275,7 +275,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8_hvt.sym} -120 -500 0 0 {name=M8
 L=1
-W=4
+W=3
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -288,8 +288,8 @@ model=pfet_01v8_hvt
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet3_01v8_hvt.sym} -390 -400 0 0 {name=M9
-L=0.15
-W=3
+L=3
+W=7
 body=VDD
 nf=1
 mult=1
@@ -303,8 +303,8 @@ model=pfet_01v8_hvt
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet3_01v8_hvt.sym} -770 -400 0 1 {name=M10
-L=0.15
-W=3
+L=3
+W=7
 body=VDD
 nf=1
 mult=1
@@ -318,14 +318,14 @@ model=pfet_01v8_hvt
 spiceprefix=X
 }
 C {devices/res.sym} -790 -280 0 0 {name=R1
-value=100
+value=25k
 footprint=1206
 device=resistor
 m=1}
 C {devices/lab_pin.sym} 0 -570 0 1 {name=p6 sig_type=std_logic lab=VDD}
 C {devices/ipin.sym} -540 -280 0 0 {name=p3 lab=IN1}
 C {devices/ipin.sym} -200 -280 0 1 {name=p4 lab=IN2}
-C {devices/opin.sym} -20 -370 0 0 {name=p5 lab=OUT}
+C {devices/opin.sym} 30 -370 0 0 {name=p5 lab=OUT}
 C {devices/lab_pin.sym} -530 -420 0 0 {name=p8 sig_type=std_logic lab=Vbias}
 C {devices/ammeter.sym} -790 -160 0 0 {name=Vmeas savecurrent=true}
 C {devices/ammeter.sym} -470 -160 0 0 {name=Vmeas1 savecurrent=true}
@@ -358,6 +358,13 @@ dc Vbias 0 1.8 0.02 VbiasR 1.8 0 0.02
 
 plot v(out)
 plot deriv(v(out))
+plot i(Vmeas)
+
+plot i(Vmeas1)
+plot i(Vmeas2)
+plot i(Vmeas4)
+
+
 write OTA_Simmetrico.raw
 
 
@@ -365,11 +372,11 @@ write OTA_Simmetrico.raw
 .save all
 
 "}
-C {devices/launcher.sym} -1580 -550 0 0 {name=h1
+C {devices/launcher.sym} -1590 -550 0 0 {name=h1
 descr=Backannotate
 tclcommand="xschem annotate_op $netlist_dir/[file tail [file rootname [xschem get current_name]]].raw"
 }
-C {devices/launcher.sym} -1580 -595 0 0 {name=h2
+C {devices/launcher.sym} -1590 -595 0 0 {name=h2
 descr="Annotate OP" 
 tclcommand="set show_hidden_texts 1; xschem annotate_op"
 }
