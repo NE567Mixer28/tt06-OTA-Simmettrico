@@ -13,8 +13,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=0.54
-x2=2.34
+x1=1.2993363
+x2=1.3198008
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -26,7 +26,7 @@ unitx=1
 logx=0
 logy=0
 color=4
-node=out}
+node=v(out)}
 N -780 -250 -780 -190 {
 lab=#net1}
 N -580 -250 -580 -190 {
@@ -186,15 +186,19 @@ lab=GND}
 N -1225 -480 -1225 -460 {
 lab=GND}
 N -1220 -295 -1220 -280 {
-lab=GND}
+lab=Vcm}
 N -1340 -295 -1340 -280 {
-lab=GND}
+lab=Vcm}
 N -1340 -375 -1340 -355 {
 lab=IN1}
 N -1220 -375 -1220 -355 {
 lab=IN2}
 N -410 -370 -280 -370 {
 lab=OUT}
+N -1340 -160 -1340 -140 {
+lab=GND}
+N -1340 -240 -1340 -220 {
+lab=Vcm}
 C {devices/iopin.sym} -1340 -570 0 0 {name=p1 lab=VDD
 }
 C {sky130_fd_pr/pfet_01v8_hvt.sym} -800 -280 0 0 {name=M1
@@ -282,7 +286,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8_hvt.sym} -920 -500 0 1 {name=M7
-L=2
+L=1
 W=1
 nf=1
 mult=1
@@ -296,7 +300,7 @@ model=pfet_01v8_hvt
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8_hvt.sym} -430 -500 0 0 {name=M8
-L=2
+L=1
 W=1
 nf=1
 mult=1
@@ -361,9 +365,8 @@ C {devices/lab_pin.sym} -1340 -450 0 0 {name=l3 sig_type=std_logic lab=GND}
 C {devices/gnd.sym} -1225 -460 0 0 {name=l2 lab=GND}
 C {devices/lab_pin.sym} -1225 -480 0 0 {name=l4 sig_type=std_logic lab=GND}
 C {devices/vsource.sym} -1340 -325 0 0 {name=Vbias value=0}
-C {devices/vsource.sym} -1220 -325 0 0 {name=Vbias1 value=0}
-C {devices/lab_pin.sym} -1340 -280 0 0 {name=l5 sig_type=std_logic lab=GND}
-C {devices/lab_pin.sym} -1220 -280 0 0 {name=l6 sig_type=std_logic lab=GND}
+C {devices/vsource.sym} -1220 -325 0 0 {name=VbiasR value=0}
+C {devices/lab_pin.sym} -1340 -140 0 0 {name=l5 sig_type=std_logic lab=GND}
 C {devices/lab_pin.sym} -1340 -375 0 0 {name=l7 sig_type=std_logic lab=IN1
 }
 C {devices/lab_pin.sym} -1220 -375 0 0 {name=l8 sig_type=std_logic lab=IN2
@@ -376,7 +379,7 @@ value="
 set appendwrite
 op
 
-dc Vbias 0 1.8 0.02 Vbias1 0.9
+dc Vbias 0 1.8 0.02 VbiasR 1.8 0 0.02
 plot v(out)
 plot deriv(v(out))
 *plot i(Vmeas)
@@ -405,3 +408,7 @@ C {devices/launcher.sym} -125 -10 0 0 {name=h5
 descr="load waves" 
 tclcommand="xschem raw_read $netlist_dir/OTA_Simmetrico.raw dc"
 }
+C {devices/vsource.sym} -1340 -190 0 0 {name=V1 value=0.9 savecurrent=false}
+C {devices/lab_pin.sym} -1340 -240 0 0 {name=p2 sig_type=std_logic lab=Vcm}
+C {devices/lab_pin.sym} -1340 -280 0 0 {name=p7 sig_type=std_logic lab=Vcm}
+C {devices/lab_pin.sym} -1220 -280 0 0 {name=p9 sig_type=std_logic lab=Vcm}
