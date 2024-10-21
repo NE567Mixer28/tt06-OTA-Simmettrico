@@ -11,7 +11,7 @@ y2=41
 ypos1=0
 ypos2=2
 divy=5
-subdivy=1
+subdivy=4
 unity=1
 x1=0
 x2=12
@@ -60,7 +60,7 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=0
+x1=1.110223e-16
 x2=12
 
 subdivx=8
@@ -342,7 +342,8 @@ C {devices/gnd.sym} -620 -492.5 0 0 {name=l2 lab=GND}
 C {devices/lab_pin.sym} -620 -512.5 0 0 {name=l4 sig_type=std_logic lab=GND}
 C {devices/vsource.sym} -735 -357.5 0 0 {name=Vbias value="0 ac 1 0
 + sin(0 1m 1T 0 0 0)"}
-C {devices/vsource.sym} -615 -357.5 0 0 {name=VbiasR value=0.9}
+C {devices/vsource.sym} -615 -357.5 0 0 {name=VbiasR value="0 ac 1 180
++ sin(0 1m 1T 0 0 0)"}
 C {devices/lab_pin.sym} -735 -407.5 0 0 {name=l7 sig_type=std_logic lab=IN1
 }
 C {devices/lab_pin.sym} -615 -407.5 0 0 {name=l8 sig_type=std_logic lab=IN2

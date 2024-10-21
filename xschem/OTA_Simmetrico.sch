@@ -157,9 +157,9 @@ lab=GND}
 N -1225 -480 -1225 -460 {
 lab=GND}
 N -1220 -295 -1220 -280 {
-lab=Vcm}
+lab=Vref}
 N -1340 -295 -1340 -280 {
-lab=Vcm}
+lab=Vref}
 N -1340 -375 -1340 -355 {
 lab=IN1}
 N -1220 -375 -1220 -355 {
@@ -169,7 +169,7 @@ lab=OUT}
 N -1340 -160 -1340 -140 {
 lab=GND}
 N -1340 -240 -1340 -220 {
-lab=Vcm}
+lab=Vref}
 N -1010 0 -940 -0 {
 lab=GND}
 N -1010 -570 -940 -570 {
@@ -338,14 +338,14 @@ value="
 
 
 
-*plot v(out)
+plot v(out)
 plot deriv(v(out))
 *plot i(Vmeas)
 
 *plot i(Vmeas1)
 *plot i(Vmeas2)
 *plot v(Vbias)
-plot i(Vmeas4)
+*plot i(Vmeas4)
 
 
 
@@ -363,12 +363,19 @@ C {devices/launcher.sym} -1590 -595 0 0 {name=h2
 descr="Annotate OP" 
 tclcommand="set show_hidden_texts 1; xschem annotate_op"
 }
-C {devices/launcher.sym} -120 -10 0 0 {name=h5
+C {devices/launcher.sym} -120 -20 0 0 {name=h5
 descr="load waves" 
 tclcommand="xschem raw_read $netlist_dir/OTA_Simmetrico.raw dc"
 }
 C {devices/vsource.sym} -1340 -190 0 0 {name=V1 value=0.9 savecurrent=false}
-C {devices/lab_pin.sym} -1340 -240 0 0 {name=p2 sig_type=std_logic lab=Vcm}
-C {devices/lab_pin.sym} -1340 -280 0 0 {name=p7 sig_type=std_logic lab=Vcm}
-C {devices/lab_pin.sym} -1220 -280 0 0 {name=p9 sig_type=std_logic lab=Vcm}
+C {devices/lab_pin.sym} -1340 -240 0 0 {name=p2 sig_type=std_logic lab=Vref}
+C {devices/lab_pin.sym} -1340 -280 0 0 {name=p7 sig_type=std_logic lab=Vref}
+C {devices/lab_pin.sym} -1220 -280 0 0 {name=p9 sig_type=std_logic lab=Vref}
 C {devices/isource.sym} -680 -440 0 0 {name=I0 value=10u}
+C {devices/launcher.sym} -1440 -40 0 0 {name=h3
+descr="Annotate OP" 
+tclcommand="set show_hidden_texts 1; xschem annotate_op"
+}
+C {devices/launcher.sym} -1440 -80 0 0 {name=h4
+descr="Netlist & sim" 
+tclcommand="xschem netlist; xschem simulate"}

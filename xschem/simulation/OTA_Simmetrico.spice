@@ -29,9 +29,9 @@ Vmeas3 OUT net7 0
 Vmeas4 net5 net8 0
 .save i(vmeas4)
 V3 VDD GND 1.8
-Vbias IN1 Vcm 0
-VbiasR IN2 Vcm 0
-V1 Vcm GND 0.9
+Vbias IN1 Vref 0
+VbiasR IN2 Vref 0
+V1 Vref GND 0.9
 I0 VDD net6 10u
 **** begin user architecture code
 
@@ -68,14 +68,14 @@ I0 VDD net6 10u
 
 
 
-*plot v(out)
+plot v(out)
 plot deriv(v(out))
 *plot i(Vmeas)
 
 *plot i(Vmeas1)
 *plot i(Vmeas2)
 *plot v(Vbias)
-plot i(Vmeas4)
+*plot i(Vmeas4)
 
 
 
