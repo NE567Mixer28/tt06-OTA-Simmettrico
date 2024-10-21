@@ -13,7 +13,7 @@ ypos2=2
 
 subdivy=4
 unity=1
-x1=0
+x1=1.3877788e-17
 
 
 subdivx=4
@@ -318,6 +318,7 @@ value="
 .param W=1
 .dc Vbias 0 1.8 0.02 VbiasR 1.8 0 0.02
 .control
+.op
 
  let start_w = 1
   let stop_w = 35
@@ -363,10 +364,10 @@ C {devices/launcher.sym} -1590 -595 0 0 {name=h2
 descr="Annotate OP" 
 tclcommand="set show_hidden_texts 1; xschem annotate_op"
 }
-C {devices/launcher.sym} -120 -20 0 0 {name=h5
+C {devices/launcher.sym} -130 0 0 0 {name=h5
 descr="load waves" 
 tclcommand="xschem raw_read $netlist_dir/OTA_Simmetrico.raw dc"
-}
+W=1}
 C {devices/vsource.sym} -1340 -190 0 0 {name=V1 value=0.9 savecurrent=false}
 C {devices/lab_pin.sym} -1340 -240 0 0 {name=p2 sig_type=std_logic lab=Vref}
 C {devices/lab_pin.sym} -1340 -280 0 0 {name=p7 sig_type=std_logic lab=Vref}
@@ -376,6 +377,6 @@ C {devices/launcher.sym} -1440 -40 0 0 {name=h3
 descr="Annotate OP" 
 tclcommand="set show_hidden_texts 1; xschem annotate_op"
 }
-C {devices/launcher.sym} -1440 -80 0 0 {name=h4
+C {devices/launcher.sym} -130 -30 0 0 {name=h4
 descr="Netlist & sim" 
 tclcommand="xschem netlist; xschem simulate"}

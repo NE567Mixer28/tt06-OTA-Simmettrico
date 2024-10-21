@@ -25,7 +25,7 @@ dataset=-1
 unitx=1
 logx=0
 logy=0
-y2=0.00003}
+y2=4.32e-05}
 N -160 -630 -160 -620 {
 lab=GND}
 N -160 -620 -160 -610 {
@@ -54,24 +54,13 @@ N -70 -570 -70 -550 {
 lab=#net2}
 N 40 -630 40 -550 {
 lab=#net2}
-C {devices/vsource.sym} -160 -660 2 0 {name=Vgs value=1.8 savecurrent=false}
+N -70 -700 -60 -700 {
+lab=GND}
+N -60 -780 -60 -700 {
+lab=GND}
+C {devices/vsource.sym} -160 -660 2 0 {name=Vgs value=1.6 savecurrent=false}
 C {devices/vsource.sym} 40 -690 0 0 {name=Vds value="1.8" savecurrent=false}
 C {sky130_fd_pr/corner.sym} -570 -770 0 0 {name=CORNER only_toplevel=true corner=tt}
-C {sky130_fd_pr/pfet3_01v8_hvt.sym} -90 -700 0 0 {name=M1
-L=1
-W=1
-body=GND
-nf=1
-mult=1
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=pfet_01v8_hvt
-spiceprefix=X
-}
 C {devices/ammeter.sym} -70 -600 0 0 {name=Vmeas savecurrent=true}
 C {devices/launcher.sym} 210 -380 0 0 {name=h5
 descr="load waves" 
@@ -84,11 +73,11 @@ value="
 * ngspice commands
 .param W=1
 .options savecurrents
-.dc Vds 0 1.8 0.01 Vgs 1.6
+.dc Vds 0 1.8 0.01  
 .control
   let start_w = 1
   let stop_w = 10
-  let delta_w = 1
+  let delta_w = 5
   let w_act = start_w
   while w_act le stop_w
     alterparam W = $&w_act
@@ -106,3 +95,20 @@ value="
 "}
 C {devices/gnd.sym} 80 -770 0 0 {name=l1 lab=GND}
 C {devices/gnd.sym} -160 -610 0 0 {name=l2 lab=GND}
+C {devices/launcher.sym} 210 -340 0 0 {name=h4
+descr="Netlist & sim" 
+tclcommand="xschem netlist; xschem simulate"}
+C {sky130_fd_pr/pfet_01v8.sym} -90 -700 0 0 {name=M1
+L=1
+W=1
+nf=1
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=pfet_01v8_hvt
+spiceprefix=X
+}

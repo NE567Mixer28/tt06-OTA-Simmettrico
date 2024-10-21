@@ -48,6 +48,7 @@ I0 VDD net6 10u
 .param W=1
 .dc Vbias 0 1.8 0.02 VbiasR 1.8 0 0.02
 .control
+.op
 
  let start_w = 1
   let stop_w = 35
