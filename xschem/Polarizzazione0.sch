@@ -58,8 +58,8 @@ C {devices/vsource.sym} -160 -660 2 0 {name=Vgs value=1.8 savecurrent=false}
 C {devices/vsource.sym} 40 -690 0 0 {name=Vds value="1.8" savecurrent=false}
 C {sky130_fd_pr/corner.sym} -570 -770 0 0 {name=CORNER only_toplevel=true corner=tt}
 C {sky130_fd_pr/pfet3_01v8_hvt.sym} -90 -700 0 0 {name=M1
-L=2
-W=W
+L=1
+W=1
 body=GND
 nf=1
 mult=1
@@ -84,7 +84,7 @@ value="
 * ngspice commands
 .param W=1
 .options savecurrents
-.dc Vds 0 1.8 0.01
+.dc Vds 0 1.8 0.01 Vgs 1.6
 .control
   let start_w = 1
   let stop_w = 10

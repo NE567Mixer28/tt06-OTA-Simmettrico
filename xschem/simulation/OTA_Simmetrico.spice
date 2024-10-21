@@ -4,41 +4,35 @@
 *.ipin IN1
 *.ipin IN2
 *.opin OUT
-XM1 net1 IN1 net6 net6 sky130_fd_pr__pfet_01v8_hvt L=2 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+XM1 net1 IN1 net6 net6 sky130_fd_pr__pfet_01v8_hvt L=1 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM2 net2 IN2 net6 net6 sky130_fd_pr__pfet_01v8_hvt L=2 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+XM2 net2 IN2 net6 net6 sky130_fd_pr__pfet_01v8_hvt L=1 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM3 net4 net4 GND GND sky130_fd_pr__nfet_01v8 L=2 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+XM3 net4 net4 GND GND sky130_fd_pr__nfet_01v8 L=23 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM4 net3 net3 GND GND sky130_fd_pr__nfet_01v8 L=2 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+XM4 net3 net3 GND GND sky130_fd_pr__nfet_01v8 L=23 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM5 net8 net3 GND GND sky130_fd_pr__nfet_01v8 L=2 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+XM5 net7 net3 GND GND sky130_fd_pr__nfet_01v8 L=1 W=10 nf=10 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM6 net9 net4 GND GND sky130_fd_pr__nfet_01v8 L=2 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+XM6 net8 net4 GND GND sky130_fd_pr__nfet_01v8 L=1 W=10 nf=10 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM7 net5 net5 VDD VDD sky130_fd_pr__pfet_01v8_hvt L=1 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
-+ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM8 OUT net5 VDD VDD sky130_fd_pr__pfet_01v8_hvt L=1 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
-+ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM9 net6 Vbias VDD VDD sky130_fd_pr__pfet_01v8_hvt L=2 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
-+ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM10 Vbias Vbias VDD VDD sky130_fd_pr__pfet_01v8_hvt L=2 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
+XM7 net5 net5 VDD VDD sky130_fd_pr__pfet_01v8_hvt L=95 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-R1 Vbias net7 25k m=1
-Vmeas net7 GND 0
-.save i(vmeas)
+XM8 OUT net5 VDD VDD sky130_fd_pr__pfet_01v8_hvt L=95 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 Vmeas1 net1 net4 0
 .save i(vmeas1)
 Vmeas2 net2 net3 0
 .save i(vmeas2)
-Vmeas3 OUT net8 0
+Vmeas3 OUT net7 0
 .save i(vmeas3)
-Vmeas4 net5 net9 0
+Vmeas4 net5 net8 0
 .save i(vmeas4)
 V3 VDD GND 1.8
 Vbias IN1 Vcm 0
 VbiasR IN2 Vcm 0
 V1 Vcm GND 0.9
+I0 VDD net6 10u
 **** begin user architecture code
 
 .param mc_mm_switch=0
@@ -51,21 +45,40 @@ V1 Vcm GND 0.9
 
 
 
+.param W=1
+.dc Vbias 0 1.8 0.02 VbiasR 1.8 0 0.02
 .control
-set appendwrite
-op
 
-dc Vbias 0 1.8 0.02 VbiasR 1.8 0 0.02
-plot v(out)
+ let start_w = 1
+  let stop_w = 35
+  let delta_w = 5
+  let w_act = start_w
+  while w_act le stop_w
+    alterparam W = $&w_act
+    reset
+    save all
+    run
+    remzerovec
+    write OTA_Simmetrico.raw
+    let w_act = w_act + delta_w
+    set appendwrite
+  end
+
+
+
+
+
+*plot v(out)
 plot deriv(v(out))
 *plot i(Vmeas)
 
 *plot i(Vmeas1)
 *plot i(Vmeas2)
-*plot i(Vmeas4)
+*plot v(Vbias)
+plot i(Vmeas4)
 
 
-write OTA_Simmetrico.raw
+
 
 
 .endc
